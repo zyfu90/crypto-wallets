@@ -1,5 +1,14 @@
 # Dockerfile for bitcoind
 
+## Environment Variables
+```
+ENV=testnet
+RPC_PORT=10000
+RPC_USER=test
+RPC_PASSWORD=test
+RPC_ALLOW_IP=0.0.0.0/0
+```
+
 ## How to start
 
 ### docker build
