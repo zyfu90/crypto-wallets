@@ -9,7 +9,7 @@ sed -i "s|SYMBOL|${SYMBOL}|g" ./template.conf
 
 if [ "${ENV}" == "mainnet" ];
 then
-    /root/bitcoin-abc/bin/bitcoind -rescan -datadir=/root/mainnet_data -conf=/root/template.conf
+    /root/binary/bin/bitcoind -rescan -datadir=/root/mainnet_data -conf=/root/template.conf
 else
-    /root/bitcoin-abc/bin/bitcoind -rescan -regtest -datadir=/root/testnet_data -conf=/root/template.conf
+    /root/binary/bin/bitcoind -rescan -regtest -datadir=/root/testnet_data -conf=/root/template.conf
 fi
