@@ -1,11 +1,12 @@
 FROM alpine
 USER root
 
-ENV ENV=testnet
-ENV RPC_PORT=10000
-ENV RPC_USER=test
-ENV RPC_PASSWORD=test
-ENV RPC_ALLOW_IP=0.0.0.0/0
+ENV ENV=testnet \
+    RPC_PORT=10000 \
+    RPC_USER=test \
+    RPC_PASSWORD=test \
+    RPC_ALLOW_IP=0.0.0.0/0 \
+    SYMBOL=btc
 
 WORKDIR /root
 COPY . .
