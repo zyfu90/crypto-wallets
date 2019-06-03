@@ -85,7 +85,7 @@ services:
     volumes:
       - /Users/eric/tmp/btg/${ENV}_data:/root/${ENV}_data:rw
   cnx:
-    build: ./btc-family
+    build: ./cnx
     image: cnx:latest
     labels:
       - "description: cryptonex"
