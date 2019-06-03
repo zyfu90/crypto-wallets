@@ -1,0 +1,177 @@
+version: "3.7"
+services:
+  btc:
+    build: ./bitcoind
+    image: btc:latest
+    labels:
+      - "description: bitcoin"
+    ports: 
+      - 10000:10000
+    environment:
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=btc
+      - EXEC=bitcoind
+  bch:
+    build: ./btc-family
+    image: bch:latest
+    labels:
+      - "description: bitcoin-abc"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/Bitcoin-ABC/bitcoin-abc/releases/download/v0.19.6/bitcoin-abc-0.19.6-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=bch
+      - EXEC=bitcoind
+  bcd:
+    build: ./btc-family
+    image: bcd:latest
+    labels:
+      - "description: bitcoin-diamond"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/eveybcd/BitcoinDiamond/releases/download/v1.3.0/bitcoindiamond-1.3.0-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=bcd
+      - EXEC=bitcoindiamondd
+  btg:
+    build: ./btc-family
+    image: btg:latest
+    labels:
+      - "description: bitcoin-gold"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/BTCGPU/BTCGPU/releases/download/v0.15.2/bitcoin-gold-0.15.2-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=btg
+      - EXEC=bgoldd
+  bsv:
+    build: ./btc-family
+    image: bsv:latest
+    labels:
+      - "description: bitcoin-sv"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://download.bitcoinsv.io/bitcoinsv/0.1.1/bitcoin-sv-0.1.1-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=bsv
+      - EXEC=bitcoind
+  dashcore:
+    build: ./btc-family
+    image: dashcore:latest
+    labels:
+      - "description: dashcore"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/dashpay/dash/releases/download/v0.14.0.0/dashcore-0.14.0.0-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=dash
+      - EXEC=dashd
+  dogecoin:
+    build: ./btc-family
+    image: dogecoin:latest
+    labels:
+      - "description: dogecoin"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/dogecoin/dogecoin/releases/download/v1.14-rc-1/dogecoin-1.14.0-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=doge
+      - EXEC=dogecoind
+  litecoin:
+    build: ./btc-family
+    image: litecoin:latest
+    labels:
+      - "description: litecoin"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/OmniLayer/omnicore/releases/download/v0.5.0/omnicore-0.5.0-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=ltc
+      - EXEC=litecoind
+  mona:
+    build: ./btc-family
+    image: mona:latest
+    labels:
+      - "description: mona"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.15.1/monacoin-0.15.1-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=mona
+      - EXEC=monacoind
+  omni:
+    build: ./btc-family
+    image: omni:latest
+    labels:
+      - "description: omni-usdt"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/OmniLayer/omnicore/releases/download/v0.5.0/omnicore-0.5.0-x86_64-linux-gnu.tar.gz
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=usdt
+      - EXEC=omnicored
+  btcp:
+    build: ./btcp
+    image: btcp:latest
+    labels:
+      - "description: bitcoin-private"
+    ports: 
+      - 10000:10000
+    environment:
+      - DOWNLOAD_URL=https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
+      - ENV=mainnet
+      - RPC_PORT=10000
+      - RPC_USER=test
+      - RPC_PASSWORD=test
+      - RPC_ALLOW_IP=0.0.0.0/0
+      - SYMBOL=btcp
+      - EXEC=btcpd
