@@ -6,14 +6,9 @@ sed -i "s|rpcallowip=.*|rpcallowip=${RPC_ALLOW_IP}|g" ./*.conf
 sed -i "s|SYMBOL|${SYMBOL}|g" ./*.conf
 
 
-if [ "${SYMBOL}" == "usdt" ];
-then
-    sed -i "s|#txindex=1|txindex=1|g" ./*.conf
-fi
-
 if [ "${ENV}" == "mainnet" ];
 then
-    /root/binary/bin/${EXEC} -rescan -datadir=/root/mainnet_data -conf=/root/mainnet.conf
+    /root/binary/bin/cryptonexd -rescan -datadir=/root/mainnet_data -conf=/root/mainnet.conf -rpcallowip=${RPC_ALLOW_IP}
 else
-    /root/binary/bin/${EXEC} -rescan -regtest -datadir=/root/testnet_data -conf=/root/testnet.conf
+    /root/binary/bin/cryptonexd -rescan -regtest -datadir=/root/testnet_data -conf=/root/testnet.conf -rpcallowip=${RPC_ALLOW_IP}
 fi

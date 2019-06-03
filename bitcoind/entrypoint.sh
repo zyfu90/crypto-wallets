@@ -1,6 +1,5 @@
 #!/bin/bash
 
-sed -i "s|rpcport=.*|rpcport=${RPC_PORT}|g" ./template.conf
 sed -i "s|rpcuser=.*|rpcuser=${RPC_USER}|g" ./template.conf
 sed -i "s|rpcpassword=.*|rpcpassword=${RPC_PASSWORD}|g" ./template.conf
 sed -i "s|rpcallowip=.*|rpcallowip=${RPC_ALLOW_IP}|g" ./template.conf
