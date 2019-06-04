@@ -11,9 +11,9 @@ ENV ENV=testnet \
     SYMBOL=btc \
     EXEC=bitcoind
 
-RUN apt-get update && apt-get install -y wget
+ARG DOWNLOAD_URL=https://github.com/Bitcoin-ABC/bitcoin-abc/releases/download/v0.19.6/bitcoin-abc-0.19.6-x86_64-linux-gnu.tar.gz
 
-ENV DOWNLOAD_URL=https://github.com/Bitcoin-ABC/bitcoin-abc/releases/download/v0.19.6/bitcoin-abc-0.19.6-x86_64-linux-gnu.tar.gz
+RUN apt-get update && apt-get install -y wget
 
 RUN wget ${DOWNLOAD_URL}
 RUN mkdir binary && tar -xvzf ./*.tar.gz -C /root/binary --strip 1 && rm ./*.gz

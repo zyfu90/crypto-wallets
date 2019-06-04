@@ -11,9 +11,9 @@ ENV ENV=testnet \
     RPC_ALLOW_IP=0.0.0.0/0 \
     SYMBOL=btcp
 
-RUN apt-get update && apt-get install -y wget unzip libgomp1
+ARG DOWNLOAD_URL=https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
 
-ENV DOWNLOAD_URL=https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
+RUN apt-get update && apt-get install -y wget unzip libgomp1
 
 RUN wget ${DOWNLOAD_URL}
 

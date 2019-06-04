@@ -17,14 +17,16 @@ services:
     volumes:
       - /root/tmp/btc/${ENV}_data:/root/${ENV}_data:rw
   bch:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/Bitcoin-ABC/bitcoin-abc/releases/download/v0.19.6/bitcoin-abc-0.19.6-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:bch
     labels:
       - "description: bitcoin-abc"
     ports: 
       - 11000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/Bitcoin-ABC/bitcoin-abc/releases/download/v0.19.6/bitcoin-abc-0.19.6-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -34,14 +36,16 @@ services:
     volumes:
       - /root/tmp/bch/${ENV}_data:/root/${ENV}_data:rw
   bsv:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://download.bitcoinsv.io/bitcoinsv/0.1.1/bitcoin-sv-0.1.1-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:bsv
     labels:
       - "description: bitcoin-sv"
     ports: 
       - 12000:10000
     environment:
-      - DOWNLOAD_URL=https://download.bitcoinsv.io/bitcoinsv/0.1.1/bitcoin-sv-0.1.1-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -51,14 +55,16 @@ services:
     volumes:
       - /root/tmp/bsv/${ENV}_data:/root/${ENV}_data:rw
   btcp:
-    build: ./btcp
+    build: 
+      context: ./btcp
+      args:
+        DOWNLOAD_URL: https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
     image: zyfu90/crypto-wallets:btcp
     labels:
       - "description: bitcoin-private"
     ports: 
       - 13000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -68,14 +74,16 @@ services:
     volumes:
       - /root/tmp/btcp/${ENV}_data:/root/${ENV}_data:rw
   btg:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/BTCGPU/BTCGPU/releases/download/v0.15.2/bitcoin-gold-0.15.2-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:btg
     labels:
       - "description: bitcoin-gold"
     ports: 
       - 14000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/BTCGPU/BTCGPU/releases/download/v0.15.2/bitcoin-gold-0.15.2-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -85,14 +93,16 @@ services:
     volumes:
       - /root/tmp/btg/${ENV}_data:/root/${ENV}_data:rw
   cnx:
-    build: ./cnx
+    build: 
+      context: ./cnx
+      args:
+        DOWNLOAD_URL: https://github.com/Cryptonex/release/raw/master/cryptonex-daemon.tar.gz
     image: zyfu90/crypto-wallets:cnx
     labels:
       - "description: cryptonex"
     ports: 
       - 15000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/Cryptonex/release/raw/master/cryptonex-daemon.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test1
@@ -102,14 +112,17 @@ services:
     volumes:
       - /root/tmp/cnx/${ENV}_data:/root/${ENV}_data:rw
   dash:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/dashpay/dash/releases/download/v0.14.0.0/dashcore-0.14.0.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:dash
     labels:
       - "description: dashcore"
     ports: 
       - 16000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/dashpay/dash/releases/download/v0.14.0.0/dashcore-0.14.0.0-x86_64-linux-gnu.tar.gz
+      
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -119,14 +132,16 @@ services:
     volumes:
       - /root/tmp/dash/${ENV}_data:/root/${ENV}_data:rw
   doge:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/dogecoin/dogecoin/releases/download/v1.14-rc-1/dogecoin-1.14.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:doge
     labels:
       - "description: dogecoin"
     ports: 
       - 17000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/dogecoin/dogecoin/releases/download/v1.14-rc-1/dogecoin-1.14.0-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -136,14 +151,16 @@ services:
     volumes:
       - /root/tmp/doge/${ENV}_data:/root/${ENV}_data:rw
   ltc:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://download.litecoin.org/litecoin-0.17.1/linux/litecoin-0.17.1-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:ltc
     labels:
       - "description: litecoin"
     ports: 
       - 18000:10000
     environment:
-      - DOWNLOAD_URL=https://download.litecoin.org/litecoin-0.17.1/linux/litecoin-0.17.1-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -153,14 +170,16 @@ services:
     volumes:
       - /root/tmp/ltc/${ENV}_data:/root/${ENV}_data:rw
   mona:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.15.1/monacoin-0.15.1-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:mona
     labels:
       - "description: monacoin"
     ports: 
       - 19000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.15.1/monacoin-0.15.1-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -170,14 +189,16 @@ services:
     volumes:
       - /root/tmp/mona/${ENV}_data:/root/${ENV}_data:rw
   omni:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/OmniLayer/omnicore/releases/download/v0.5.0/omnicore-0.5.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:omni
     labels:
       - "description: omni-usdt"
     ports: 
       - 20000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/OmniLayer/omnicore/releases/download/v0.5.0/omnicore-0.5.0-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_PORT=10000
       - RPC_USER=test
@@ -188,14 +209,16 @@ services:
     volumes:
       - /root/tmp/omni/${ENV}_data:/root/${ENV}_data:rw
   bcd:
-    build: ./btc-family
+    build: 
+      context: ./btc-family
+      args:
+        DOWNLOAD_URL: https://github.com/eveybcd/BitcoinDiamond/releases/download/v1.3.0/bitcoindiamond-1.3.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:bcd
     labels:
       - "description: bitcoin-diamond"
     ports: 
       - 21000:10000
     environment:
-      - DOWNLOAD_URL=https://github.com/eveybcd/BitcoinDiamond/releases/download/v1.3.0/bitcoindiamond-1.3.0-x86_64-linux-gnu.tar.gz
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
