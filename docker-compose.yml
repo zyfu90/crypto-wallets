@@ -2,7 +2,7 @@ version: "3.7"
 services:
   btc:
     build: ./bitcoind
-    image: btc:latest
+    image: zyfu90/crypto-wallets:btc
     labels:
       - "description: bitcoin"
     ports: 
@@ -15,10 +15,10 @@ services:
       - SYMBOL=btc
       - EXEC=bitcoind
     volumes:
-      - /Users/eric/tmp/btc/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/btc/${ENV}_data:/root/${ENV}_data:rw
   bch:
     build: ./btc-family
-    image: bch:latest
+    image: zyfu90/crypto-wallets:bch
     labels:
       - "description: bitcoin-abc"
     ports: 
@@ -32,10 +32,10 @@ services:
       - SYMBOL=bch
       - EXEC=bitcoind
     volumes:
-      - /Users/eric/tmp/bch/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/bch/${ENV}_data:/root/${ENV}_data:rw
   bsv:
     build: ./btc-family
-    image: bsv:latest
+    image: zyfu90/crypto-wallets:bsv
     labels:
       - "description: bitcoin-sv"
     ports: 
@@ -49,10 +49,10 @@ services:
       - SYMBOL=bsv
       - EXEC=bitcoind
     volumes:
-      - /Users/eric/tmp/bsv/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/bsv/${ENV}_data:/root/${ENV}_data:rw
   btcp:
     build: ./btcp
-    image: btcp:latest
+    image: zyfu90/crypto-wallets:btcp
     labels:
       - "description: bitcoin-private"
     ports: 
@@ -66,10 +66,10 @@ services:
       - SYMBOL=btcp
       - EXEC=btcpd
     volumes:
-      - /Users/eric/tmp/btcp/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/btcp/${ENV}_data:/root/${ENV}_data:rw
   btg:
     build: ./btc-family
-    image: btg:latest
+    image: zyfu90/crypto-wallets:btg
     labels:
       - "description: bitcoin-gold"
     ports: 
@@ -83,10 +83,10 @@ services:
       - SYMBOL=btg
       - EXEC=bgoldd
     volumes:
-      - /Users/eric/tmp/btg/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/btg/${ENV}_data:/root/${ENV}_data:rw
   cnx:
     build: ./cnx
-    image: cnx:latest
+    image: zyfu90/crypto-wallets:cnx
     labels:
       - "description: cryptonex"
     ports: 
@@ -100,10 +100,10 @@ services:
       - SYMBOL=cnx
       - EXEC=cryptonexd
     volumes:
-      - /Users/eric/tmp/cnx/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/cnx/${ENV}_data:/root/${ENV}_data:rw
   dash:
     build: ./btc-family
-    image: dash:latest
+    image: zyfu90/crypto-wallets:dash
     labels:
       - "description: dashcore"
     ports: 
@@ -117,10 +117,10 @@ services:
       - SYMBOL=dash
       - EXEC=dashd
     volumes:
-      - /Users/eric/tmp/dash/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/dash/${ENV}_data:/root/${ENV}_data:rw
   doge:
     build: ./btc-family
-    image: doge:latest
+    image: zyfu90/crypto-wallets:doge
     labels:
       - "description: dogecoin"
     ports: 
@@ -134,10 +134,10 @@ services:
       - SYMBOL=doge
       - EXEC=dogecoind
     volumes:
-      - /Users/eric/tmp/doge/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/doge/${ENV}_data:/root/${ENV}_data:rw
   ltc:
     build: ./btc-family
-    image: ltc:latest
+    image: zyfu90/crypto-wallets:ltc
     labels:
       - "description: litecoin"
     ports: 
@@ -151,10 +151,10 @@ services:
       - SYMBOL=ltc
       - EXEC=litecoind
     volumes:
-      - /Users/eric/tmp/ltc/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/ltc/${ENV}_data:/root/${ENV}_data:rw
   mona:
     build: ./btc-family
-    image: mona:latest
+    image: zyfu90/crypto-wallets:mona
     labels:
       - "description: monacoin"
     ports: 
@@ -168,10 +168,10 @@ services:
       - SYMBOL=mona
       - EXEC=monacoind
     volumes:
-      - /Users/eric/tmp/mona/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/mona/${ENV}_data:/root/${ENV}_data:rw
   omni:
     build: ./btc-family
-    image: omni:latest
+    image: zyfu90/crypto-wallets:omni
     labels:
       - "description: omni-usdt"
     ports: 
@@ -186,11 +186,10 @@ services:
       - SYMBOL=usdt
       - EXEC=omnicored
     volumes:
-      - /Users/eric/tmp/omni/${ENV}_data:/root/${ENV}_data:rw
-
+      - /root/tmp/omni/${ENV}_data:/root/${ENV}_data:rw
   bcd:
     build: ./btc-family
-    image: bcd:latest
+    image: zyfu90/crypto-wallets:bcd
     labels:
       - "description: bitcoin-diamond"
     ports: 
@@ -204,4 +203,4 @@ services:
       - SYMBOL=bcd
       - EXEC=bitcoindiamondd
     volumes:
-      - /Users/eric/tmp/bcd/${ENV}_data:/root/${ENV}_data:rw
+      - /root/tmp/bcd/${ENV}_data:/root/${ENV}_data:rw
