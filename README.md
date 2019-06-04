@@ -20,7 +20,7 @@ This is a collection of BTC family Dockerfile
 ## Usage
 
 ```bash
-docker-compose build
+ENV=mainnet docker-compose build
 
 ENV=mainnet docker-compose up -d
 ```
