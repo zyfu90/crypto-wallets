@@ -13,7 +13,7 @@ ENV ENV=testnet \
 
 ARG DOWNLOAD_URL=https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
 
-RUN apt-get update && apt-get install -y wget unzip libgomp1
+RUN apt-get update && apt-get install -y wget unzip libgomp1 curl
 
 RUN wget ${DOWNLOAD_URL}
 

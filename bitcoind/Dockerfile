@@ -9,7 +9,7 @@ ENV ENV=testnet \
 
 WORKDIR /root
 COPY . .
-RUN apk add bitcoin bash
+RUN apk add bitcoin bash curl
 RUN mkdir mainnet_data && mkdir testnet_data
 
 ENTRYPOINT ["./entrypoint.sh"]

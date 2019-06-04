@@ -3,44 +3,82 @@ services:
   btc:
     build: ./bitcoind
     image: zyfu90/crypto-wallets:btc
+    container_name: btc
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: bitcoin"
     ports: 
       - 10000:10000
     environment:
       - ENV=${ENV}
-      - RPC_USER=test
-      - RPC_PASSWORD=test
+      - RPC_USER=sdce
+      - RPC_PASSWORD=test1
       - RPC_ALLOW_IP=0.0.0.0/0
       - SYMBOL=btc
-      - EXEC=bitcoind
     volumes:
-      - /root/tmp/btc/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/btc/${ENV}_data:/root/${ENV}_data:rw
   bch:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/Bitcoin-ABC/bitcoin-abc/releases/download/v0.19.6/bitcoin-abc-0.19.6-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:bch
+    container_name: bch
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: bitcoin-abc"
     ports: 
       - 11000:10000
     environment:
       - ENV=${ENV}
-      - RPC_USER=test
-      - RPC_PASSWORD=test
+      - RPC_USER=sdce
+      - RPC_PASSWORD=test2
       - RPC_ALLOW_IP=0.0.0.0/0
       - SYMBOL=bch
       - EXEC=bitcoind
     volumes:
-      - /root/tmp/bch/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/bch/${ENV}_data:/root/${ENV}_data:rw
   bsv:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://download.bitcoinsv.io/bitcoinsv/0.1.1/bitcoin-sv-0.1.1-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:bsv
+    container_name: bsv
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: bitcoin-sv"
     ports: 
@@ -53,13 +91,26 @@ services:
       - SYMBOL=bsv
       - EXEC=bitcoind
     volumes:
-      - /root/tmp/bsv/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/bsv/${ENV}_data:/root/${ENV}_data:rw
   btcp:
     build: 
       context: ./btcp
       args:
         DOWNLOAD_URL: https://github.com/BTCPrivate/BitcoinPrivate/releases/download/1.0.13/btcp_1.0.13-linux.zip
     image: zyfu90/crypto-wallets:btcp
+    container_name: btcp
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: bitcoin-private"
     ports: 
@@ -70,15 +121,27 @@ services:
       - RPC_PASSWORD=test
       - RPC_ALLOW_IP=0.0.0.0/0
       - SYMBOL=btcp
-      - EXEC=btcpd
     volumes:
-      - /root/tmp/btcp/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/btcp/${ENV}_data:/root/${ENV}_data:rw
   btg:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/BTCGPU/BTCGPU/releases/download/v0.15.2/bitcoin-gold-0.15.2-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:btg
+    container_name: btg
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: bitcoin-gold"
     ports: 
@@ -91,13 +154,26 @@ services:
       - SYMBOL=btg
       - EXEC=bgoldd
     volumes:
-      - /root/tmp/btg/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/btg/${ENV}_data:/root/${ENV}_data:rw
   cnx:
     build: 
       context: ./cnx
       args:
         DOWNLOAD_URL: https://github.com/Cryptonex/release/raw/master/cryptonex-daemon.tar.gz
     image: zyfu90/crypto-wallets:cnx
+    container_name: cnx
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: cryptonex"
     ports: 
@@ -110,19 +186,31 @@ services:
       - SYMBOL=cnx
       - EXEC=cryptonexd
     volumes:
-      - /root/tmp/cnx/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/cnx/${ENV}_data:/root/${ENV}_data:rw
   dash:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/dashpay/dash/releases/download/v0.14.0.0/dashcore-0.14.0.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:dash
+    container_name: dash
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: dashcore"
     ports: 
       - 16000:10000
     environment:
-      
       - ENV=${ENV}
       - RPC_USER=test
       - RPC_PASSWORD=test
@@ -130,13 +218,26 @@ services:
       - SYMBOL=dash
       - EXEC=dashd
     volumes:
-      - /root/tmp/dash/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/dash/${ENV}_data:/root/${ENV}_data:rw
   doge:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/dogecoin/dogecoin/releases/download/v1.14-rc-1/dogecoin-1.14.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:doge
+    container_name: doge
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: dogecoin"
     ports: 
@@ -149,13 +250,26 @@ services:
       - SYMBOL=doge
       - EXEC=dogecoind
     volumes:
-      - /root/tmp/doge/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/doge/${ENV}_data:/root/${ENV}_data:rw
   ltc:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://download.litecoin.org/litecoin-0.17.1/linux/litecoin-0.17.1-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:ltc
+    container_name: ltc
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: litecoin"
     ports: 
@@ -168,13 +282,26 @@ services:
       - SYMBOL=ltc
       - EXEC=litecoind
     volumes:
-      - /root/tmp/ltc/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/ltc/${ENV}_data:/root/${ENV}_data:rw
   mona:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/monacoinproject/monacoin/releases/download/monacoin-0.15.1/monacoin-0.15.1-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:mona
+    container_name: mona
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: monacoin"
     ports: 
@@ -187,13 +314,26 @@ services:
       - SYMBOL=mona
       - EXEC=monacoind
     volumes:
-      - /root/tmp/mona/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/mona/${ENV}_data:/root/${ENV}_data:rw
   omni:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/OmniLayer/omnicore/releases/download/v0.5.0/omnicore-0.5.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:omni
+    container_name: omni
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: omni-usdt"
     ports: 
@@ -207,13 +347,26 @@ services:
       - SYMBOL=usdt
       - EXEC=omnicored
     volumes:
-      - /root/tmp/omni/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/omni/${ENV}_data:/root/${ENV}_data:rw
   bcd:
     build: 
       context: ./btc-family
       args:
         DOWNLOAD_URL: https://github.com/eveybcd/BitcoinDiamond/releases/download/v1.3.0/bitcoindiamond-1.3.0-x86_64-linux-gnu.tar.gz
     image: zyfu90/crypto-wallets:bcd
+    container_name: bcd
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 30s
+        max_attempts: 6
+        window: 120s
+    healthcheck:
+      test: ["CMD", "/root/healthcheck.sh"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
     labels:
       - "description: bitcoin-diamond"
     ports: 
@@ -226,4 +379,4 @@ services:
       - SYMBOL=bcd
       - EXEC=bitcoindiamondd
     volumes:
-      - /root/tmp/bcd/${ENV}_data:/root/${ENV}_data:rw
+      - /Users/eric/tmp/bcd/${ENV}_data:/root/${ENV}_data:rw
